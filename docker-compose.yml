@@ -1,0 +1,6 @@
+version: '3'
+
+services:
+  mongo_with_data:
+    build: Mongo/. # build our own image with sample data
+    image: mongo-sample-datasets:dev
