@@ -4,6 +4,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace dotnetVsNode
 {
+    [BsonIgnoreExtraElements]
     public class Restaurant
     {
         [BsonId]
@@ -12,6 +13,5 @@ namespace dotnetVsNode
 
         [BsonElement("name")]
         public string Name { get; set; }
-
     }
 }
