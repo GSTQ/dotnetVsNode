@@ -1,9 +1,13 @@
+using RestaurantsApp.Models;
+using System;
 using System.Threading.Tasks;
 
-namespace dotnetVsNode.Services
+namespace RestaurantsApp.Services
 {
     public interface IRestaurauntService
     {
-        Task<string> GetById(string id);
+        Task<Restaurant> GetById(string id);
+        Task<Restaurant[]> GetAllByZipcode(string zipcode);
+        Task AddGrade(string id, DateTime date, string grade, int score);
     }
 }

@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using dotnetVsNode.Services;
 using Microsoft.AspNetCore.Mvc;
-using MongoDB.Driver;
+using RestaurantsApp.Models;
+using RestaurantsApp.Services;
 
-namespace dotnetVsNode.Controllers
+namespace RestaurantsApp.Controllers
 {
     [Route("api/restaurant")]
     [ApiController]
@@ -19,11 +17,22 @@ namespace dotnetVsNode.Controllers
             _restaurantService = restaurantService;
         }
 
-        // GET api/values
         [HttpGet]
-        public Task<string> Get(string id)
+        public Task<Restaurant> Get(string id)
         {
             return _restaurantService.GetById(id);
+        }
+
+        [HttpGet("list")]
+        public Task<Restaurant[]> GetList(string zipcode)
+        {
+            return _restaurantService.GetAllByZipcode(zipcode);
+        }
+
+        [HttpPut("{id}/grade")]
+        public Task AddGrade([FromRoute] string id, DateTime date, string grade, int score)
+        {
+            return _restaurantService.AddGrade(id, date, grade, score);
         }
     }
 }
