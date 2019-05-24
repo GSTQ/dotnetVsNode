@@ -2,8 +2,13 @@ version: '3'
 
 services:
   mongo_with_data:
-    build: Mongo/. # build our own image with sample data
-    image: mongo-sample-datasets:dev
+    build: Mongo/.
+    image: mongo_data
     ports:
       - 27017:27017
 
+  restaurants_app:
+    build: .
+    image: restaurants_app
+    ports:
+      - 6000:80
